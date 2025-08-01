@@ -3,14 +3,20 @@ function sortear() {
   let de = parseInt(document.getElementById("de").value);
   let ate = parseInt(document.getElementById("ate").value);
 
-  numerosSorteados = [];
+  let numero;
+  let sorteados = [];
 
   for (let i = 0; i < quantidade; i++) {
-    numerosSorteados.push(obterNumeroAleatorio(de, ate));
+    numero = obterNumeroAleatorio(de, ate);
+
+    while (sorteados.includes(numero)) {
+      numero = obterNumeroAleatorio(de, ate);
+    }
+    sorteados.push(numero);
   }
 
   let resultado = document.getElementById("resultado");
-  resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${numerosSorteados}</label>`;
+  resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${sorteados}</label>`;
 }
 
 function obterNumeroAleatorio(min, max) {
