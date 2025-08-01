@@ -17,8 +17,26 @@ function sortear() {
 
   let resultado = document.getElementById("resultado");
   resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${sorteados}</label>`;
+
+  alterarStatusBotao();
+}
+
+reiniciar();
+
+function alterarStatusBotao() {
+  let botao = document.getElementById("btn-reiniciar");
+
+  if (botao.classList.contains("container__botao-desabilitado")) {
+    botao.classList.remove("container__botao-desabilitado");
+    botao.classList.add("container__botao");
+  } else {
+    botao.classList.add("container__botao-desabilitado");
+    botao.classList.remove("container__botao");
+  }
 }
 
 function obterNumeroAleatorio(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
+
+function reiniciar() {}
